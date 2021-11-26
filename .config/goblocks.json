@@ -1,0 +1,47 @@
+{
+	"separator": " | ",
+	"actions":
+	[
+                {
+                        "prefix": "ETHUSD: ",
+                        "updateSignal": "40",
+                        "command": "curl usd.rate.sx/1eth 2>/dev/null | xargs printf ' $%.1f\n' 2>/dev/null",
+                        "timer": "5m"
+                },
+		{
+			"prefix": "BTCUSD: ",
+			"updateSignal": "40",
+			"command": "curl usd.rate.sx/1btc 2>/dev/null | xargs printf ' $%.1f\n' 2>/dev/null",
+			"timer": "5m"
+		},
+		{
+			"updateSignal": "39",
+			"command": "(sleep 5 ; curl \"wttr.in\/Las%20Condes,Chile?format=2\")",
+			"timer": "45m"
+		},
+		{
+			"prefix": "🗓 ",
+			"updateSignal": "35",
+			"command": "#Date",
+			"format": "Monday 02/01/2006 15:04:05",
+			"timer": "1s"
+		},
+		{
+			"prefix": "Mem: ",
+			"updateSignal": "37",
+			"command": "#Memory",
+			"suffix": "%",
+			"format": "%.2f",
+			"timer": "2s"
+		},
+		{
+			"prefix": "CPU: ",
+			"updateSignal": "38",
+			"command": "#Cpu",
+			"suffix": "%",
+			"format": "%.2f",
+			"timer": "2s"
+		}
+	]
+
+}
