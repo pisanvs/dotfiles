@@ -1,26 +1,32 @@
 {
-	"separator": " | ",
+	"separator": "  ",
 	"actions":
 	[
-                {
-                        "prefix": "ETHUSD: ",
-                        "updateSignal": "40",
-                        "command": "curl usd.rate.sx/1eth 2>/dev/null | xargs printf ' $%.1f\n' 2>/dev/null",
-                        "timer": "5m"
-                },
+		{
+			"prefix": "XMRUSD: ",
+			"updateSignal": "40",
+			"command": "tvs -n BINANCE:XMRUSD -s -q | xargs printf ' $%.1f\n' 2>/dev/null",
+			"timer": "45s"
+		},
+		{
+			"prefix": "ETHUSD: ",
+			"updateSignal": "40",
+			"command": "tvs -n BINANCE:ETHUSD -s -q | xargs printf ' $%.2f' 2>/dev/null",
+			"timer": "45s"
+		},
 		{
 			"prefix": "BTCUSD: ",
 			"updateSignal": "40",
-			"command": "curl usd.rate.sx/1btc 2>/dev/null | xargs printf ' $%.1f\n' 2>/dev/null",
-			"timer": "5m"
+			"command": "tvs -n BINANCE:BTCUSD -s -q | xargs printf ' $%.1f\n' 2>/dev/null",
+			"timer": "45s"
 		},
 		{
 			"updateSignal": "39",
-			"command": "(sleep 5 ; curl \"wttr.in\/Las%20Condes,Chile?format=2\")",
-			"timer": "45m"
+			"command": "(curl \"wttr.in\/Las%20Condes,Chile?format=%EF%8B%89%20%t%20%c\")",
+			"timer": "30m"
 		},
 		{
-			"prefix": "🗓 ",
+			"prefix": "",
 			"updateSignal": "35",
 			"command": "#Date",
 			"format": "Monday 02/01/2006 15:04:05",
